@@ -3,37 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Hoelzemans</title>
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <title>The Hoelzemans – Wedding</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-  <header class="hero">
-    <h1>The Hoelzemans</h1>
-    <p>Jordon &amp; [Wife’s Name]</p>
-    <a class="cta" href="/wedding/">Our Wedding</a>
-  </header>
 
-  <main>
-    <section>
-      <h2>Welcome</h2>
-      <p>We’re building a home on the internet — a place for our family, our adventures, and the people we love.</p>
+  <!-- Parallax background layers -->
+  <div class="parallax-layer layer1"></div>
+  <div class="parallax-layer layer2"></div>
+  <div class="parallax-layer layer3"></div>
+
+  <!-- Falling leaves -->
+  <img class="falling-leaf" style="--x:0.2; --delay:0s;" src="assets/img/flora_falling1.png">
+  <img class="falling-leaf" style="--x:0.7; --delay:3s;" src="assets/img/flora_falling2.png">
+  <img class="falling-leaf" style="--x:0.4; --delay:6s;" src="assets/img/flora_falling1.png">
+
+  <!-- Mini pinecone menu toggle -->
+  <div class="menu-toggle" id="menuToggle">
+    <img src="assets/img/pinecone_menu_icon.png" alt="Menu" />
+  </div>
+
+  <!-- Slide-in menu -->
+  <nav class="menu" id="menu">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#our-story">Our Story</a></li>
+      <li><a href="#event-details">Event Details</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#ceremony-venue">Ceremony Venue</a></li>
+      <li><a href="#reception-venue">Reception Venue</a></li>
+      <li><a href="#food-drink">Food and Drink</a></li>
+      <li><a href="#where-to-stay">Where to Stay</a></li>
+      <li><a href="#registry">Registry</a></li>
+      <li><a href="#hoelzmedia">HoelzMedia</a></li>
+      <li><a href="#trivia">Hoelzeman Trivia</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Pinecone intro animation -->
+  <div class="pinecone-intro">
+    <img src="assets/img/pinecone_intro.png" alt="Pinecone Intro" />
+  </div>
+
+  <!-- Main content -->
+  <main class="content">
+    <div class="title-script">Jordon &amp; Jan</div>
+    <div class="title-serif">Together with their families</div>
+    <div class="divider"></div>
+
+    <div class="date-line">Saturday, the Tenth of October, 2026</div>
+    <div class="location-line">St. Elizabeth of Hungary Catholic Church • Eureka Springs, Arkansas</div>
+
+    <!-- Countdown -->
+    <section class="countdown" aria-label="Countdown to wedding day">
+      <div class="countdown-label">Countdown to the Sacrament</div>
+      <div class="countdown-days" id="countdownDays">
+        0
+        <span>Days</span>
+      </div>
     </section>
 
-    <section>
-      <h2>What’s Here</h2>
-      <ul>
-        <li><a href="/wedding/">Wedding details & RSVP</a></li>
-        <li>Future events and announcements</li>
-        <li>Family updates</li>
-        <li>Projects and creative ventures</li>
-      </ul>
-    </section>
+    <!-- Buttons -->
+    <div class="button-row">
+      <a href="#rsvp" class="btn btn-primary">RSVP</a>
+      <a href="#event-details" class="btn">Event Details</a>
+      <a href="#where-to-stay" class="btn">Where to Stay</a>
+    </div>
+
+    <!-- Foreground intro image -->
+    <div class="foreground-image">
+      <img src="assets/img/wedding_home_intro.png" alt="Wedding Intro" />
+    </div>
   </main>
 
-  <footer>
-    <p>© 2026 The Hoelzemans</p>
-  </footer>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
 
