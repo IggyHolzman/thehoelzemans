@@ -51,14 +51,7 @@ function createFallingLeaves(count = 30) {
     ----------------------------------------------------------- */
     leaf.addEventListener('animationiteration', () => {
 
-      // New random horizontal position for next fall
-      leaf.style.setProperty('--x', Math.random());
 
-      // New random speed group
-      leaf.style.setProperty(
-        '--speed',
-        Math.random() < 0.5 ? `${slowGroupSpeed}s` : `${verySlowGroupSpeed}s`
-      );
 
       // Randomly change image each cycle
       const nextIndex = Math.floor(Math.random() * leafImages.length);
