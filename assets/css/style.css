@@ -5,7 +5,7 @@
   --accent-gold: #b08a4a;
 
   /* Very wide foliage panels so they overflow off-screen horizontally */
-  --flora-width: 2200px;
+  --flora-width: 800px;
 
   /* Half of content max-width (480px) */
   --content-half: 240px;
@@ -66,7 +66,7 @@ body::before {
 .layer2 {
   background-image: url('../img/flora_layer2.png');
   background-position: left center;  /* straight edge on left side of image */
-  left: calc(50% + var(--content-half) + var(--center-offset));
+  left: calc(50% + var(--content-half) + var(--center-offset)- var(--flora-width));
   transform: translateY(calc(var(--scroll) * -0.15));
 }
 
@@ -82,7 +82,7 @@ body::before {
 .layer4 {
   background-image: url('../img/flora_layer4.png');
   background-position: left center;
-  left: calc(50% + var(--content-half) + var(--center-offset));
+  left: calc(50% + var(--content-half) + var(--center-offset)- var(--flora-width));
   transform: translateY(calc(var(--scroll) * -0.3));
 }
 
@@ -90,10 +90,11 @@ body::before {
 .falling-leaf {
   position: fixed;
   top: -20vh;                            /* start 20% above viewport */
-  left: calc(10% + 80% * var(--x));      /* horizontal position via CSS var */
+  left: calc(-5% + 105% * var(--x));      /* horizontal position via CSS var */
   width: 50px;
-  opacity: 0.9;
+  opacity: 0.5;
   animation: fall var(--speed) linear infinite;
+  animation-delay: 0s;
   z-index: -4;                           /* above foliage, below content */
 }
 
