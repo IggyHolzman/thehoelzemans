@@ -1,0 +1,282 @@
+:root {
+  --cream: #f5f0e6;
+  --ink: #1f2430;
+  --accent-blue: #2f4a73;
+  --accent-gold: #b08a4a;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('../img/wedding_home_background.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+  z-index: -5;
+}
+
+/* Parallax layers */
+.parallax-layer {
+  position: fixed;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: -4;
+}
+
+.layer1 {
+  background-image: url('../img/flora_layer1.png');
+  transform: translateY(calc(var(--scroll) * -0.1));
+}
+
+.layer2 {
+  background-image: url('../img/flora_layer2.png');
+  transform: translateY(calc(var(--scroll) * -0.2));
+}
+
+.layer3 {
+  background-image: url('../img/flora_layer3.png');
+  transform: translateY(calc(var(--scroll) * -0.35));
+}
+
+/* Falling leaves */
+.falling-leaf {
+  position: fixed;
+  top: -10%;
+  left: calc(10% + 80% * var(--x));
+  width: 50px;
+  opacity: 0.8;
+  animation: fall 12s linear infinite;
+  animation-delay: var(--delay);
+  z-index: -3;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(120vh) rotate(360deg); }
+}
+
+/* Menu toggle */
+.menu-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(245,240,230,0.9);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.menu-toggle img {
+  max-width: 70%;
+}
+
+/* Slide-in menu */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 75vw;
+  max-width: 320px;
+  background: rgba(245,240,230,0.97);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  z-index: 19;
+  padding: 60px 20px 20px;
+}
+
+.menu.open {
+  transform: translateX(0);
+}
+
+.menu h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: var(--accent-blue);
+}
+
+.menu ul {
+  list-style: none;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+/* Pinecone intro */
+.pinecone-intro {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  opacity: 0;
+  animation: pineconeIntro 4s ease forwards;
+  z-index: 5;
+}
+
+.pinecone-intro img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes pineconeIntro {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+  70% { transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0.6; }
+}
+
+/* Main content */
+.content {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 120px 20px 40px;
+  text-align: center;
+  opacity: 0;
+  animation: contentFadeIn 3s ease forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.6rem;
+  color: var(--accent-blue);
+}
+
+.title-serif {
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 18px;
+}
+
+.divider {
+  width: 60%;
+  height: 1px;
+  margin: 0 auto 18px;
+  background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+}
+
+.date-line {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.location-line {
+  font-size: 0.9rem;
+  color: var(--accent-blue);
+  margin-bottom: 24px;
+}
+
+/* Countdown */
+.countdown {
+  margin: 24px 0 32px;
+}
+
+.countdown-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.countdown-days {
+  font-size: 3rem;
+}
+
+.countdown-days span {
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(31,36,48,0.2);
+  background: rgba(245,240,230,0.9);
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* Foreground image */
+.foreground-image {
+  margin-top: 24px;
+}
+
+.foreground-image img,
+.foreground-image video {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .content {
+    max-width: 640px;
+  }
+  .title-script {
+    font-size: 3rem;
+  }
+  .countdown-days {
+    font-size: 3.6rem;
+  }
+}
