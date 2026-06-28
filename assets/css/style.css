@@ -34,7 +34,6 @@ body::before {
 
 /* Parallax layers */
 .parallax-layer {
-  position: fixed;
   top: 0;
   bottom: 0;
   width: var(--flora-width, 360px);
