@@ -3,7 +3,7 @@
   --ink: #1f2430;
   --accent-blue: #2f4a73;
   --accent-gold: #b08a4a;
-    --flora-width: 360px;
+    --flora-width: 720px;
   --center-offset: 8px;
 }
 
@@ -39,9 +39,7 @@ body::before {
   --center-offset: 8px;
 }
 
-:root {
-  --flora-width: 600px; /* adjust as needed */
-}
+
 
 /* Parallax layers */
 .parallax-layer {
