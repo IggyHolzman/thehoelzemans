@@ -5,7 +5,7 @@
   --accent-gold: #b08a4a;
 
   /* Very wide foliage panels so they overflow off-screen horizontally */
-  --flora-width: 600px;
+  --flora-width: 1800px;
 
   /* Half of content max-width (480px) */
   --content-half: 240px;
