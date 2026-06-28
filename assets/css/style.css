@@ -34,12 +34,6 @@ body::before {
   z-index: -10;
 }
 
-:root {
-  --flora-width: 360px;
-  --center-offset: 8px;
-}
-
-
 
 /* Parallax layers */
 .parallax-layer {
@@ -47,7 +41,7 @@ body::before {
   top: 0;
   width: var(--flora-width);
   background-repeat: no-repeat;
-  background-size: auto 200%;   /* scale height to viewport */
+  background-size: auto;   /* scale height to viewport */
   background-position: center;
   pointer-events: none;
   opacity: 0.25;
@@ -58,14 +52,13 @@ body::before {
 .layer1 {
   background-image: url('../img/flora_layer1.png');
   
-  left: 0; /* stick to left edge */
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 /* RH near */
 .layer2 {
   background-image: url('../img/flora_layer2.png');
-  right: 0; /* stick to right edge */
+
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
