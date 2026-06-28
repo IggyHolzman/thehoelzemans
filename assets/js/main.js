@@ -1,25 +1,36 @@
-// Falling leaves generator
-function createFallingLeaves(count = 20) {
+function createFallingLeaves(count = 30) {
+  const maxDelay = 24; // controls median spacing
+  const slowGroupSpeed = 36;
+  const verySlowGroupSpeed = 52;
+
   for (let i = 0; i < count; i++) {
     const leaf = document.createElement('img');
-    leaf.src = '../img/leaf.png'; // your leaf asset
+    leaf.src = '../img/leaf.png';
     leaf.classList.add('falling-leaf');
 
     // Random horizontal position
     leaf.style.setProperty('--x', Math.random());
 
-    // Random animation delay
-    leaf.style.setProperty('--delay', `${Math.random() * 10}s`);
+    // Random delay
+    leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
+
+    // Random speed group
+    leaf.style.setProperty('--speed',
+      Math.random() < 0.5 ? slowGroupSpeed + 's' : verySlowGroupSpeed + 's'
+    );
+
+    // Randomize again on each cycle
+    leaf.addEventListener('animationiteration', () => {
+      leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
+      leaf.style.setProperty('--x', Math.random());
+    });
 
     document.body.appendChild(leaf);
   }
 }
 
 createFallingLeaves();
-leaf.addEventListener('animationiteration', () => {
-  leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
-  leaf.style.setProperty('--x', Math.random());
-});
+
 
 
 // Menu toggle
