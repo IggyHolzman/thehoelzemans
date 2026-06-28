@@ -35,19 +35,19 @@ body::before {
 }
 
 
-/* Parallax layers */
 .parallax-layer {
   position: fixed;
   top: 0;
-  bottom: 0;                     /* REQUIRED: gives height */
-  width: var(--flora-width, 720px);
+  bottom: 0;
+  width: 1200px;              /* wider than viewport */
   background-repeat: no-repeat;
-  background-size: auto 100%;    /* scale height to viewport */
-  background-position: center;
+  background-size: auto 100%; /* scale height */
+  background-position: left center; /* LH */
   pointer-events: none;
   opacity: 0.25;
   z-index: -5;
 }
+
 
 /* LH near */
 .layer1 {
