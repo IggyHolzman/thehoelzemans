@@ -5,8 +5,8 @@
 function createFallingLeaves(count = 30) {
 
   // Two speed groups (slow + very slow)
-  const slowGroupSpeed = 36;
-  const verySlowGroupSpeed = 52;
+  const slowGroupSpeed = 40;
+  const verySlowGroupSpeed = 60;
 
   // List of leaf image variants (6 total, adjust paths as needed)
   const leafImages = [
@@ -15,7 +15,9 @@ function createFallingLeaves(count = 30) {
     'assets/img/flora_falling3.png',
     'assets/img/flora_falling4.png',
     'assets/img/flora_falling5.png',
-    'assets/img/flora_falling6.png'
+    'assets/img/flora_falling6.png',
+    'assets/img/flora_falling7.png',
+    'assets/img/flora_falling8.png'
   ];
 
   for (let i = 0; i < count; i++) {
@@ -54,7 +56,7 @@ function createFallingLeaves(count = 30) {
     ----------------------------------------------------------- */
     leaf.addEventListener('animationiteration', () => {
       //Randomize start height 
-      leaf.style.setProperty('--y', Math.random() * 0.3);
+      leaf.style.setProperty('--y', Math.random());
 
       // Randomly change image each cycle
       const nextIndex = Math.floor(Math.random() * leafImages.length);
