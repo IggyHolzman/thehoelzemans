@@ -39,9 +39,9 @@ body::before {
 .parallax-layer {
   position: fixed;
   top: 0;
+  bottom: 0;
   width: var(--flora-width);
   background-repeat: no-repeat;
-  background-size: auto;   /* scale height to viewport */
   background-position: center;
   pointer-events: none;
   opacity: 0.25;
@@ -51,14 +51,14 @@ body::before {
 /* LH near */
 .layer1 {
   background-image: url('../img/flora_layer1.png');
-  
+  left: 0;
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 /* RH near */
 .layer2 {
   background-image: url('../img/flora_layer2.png');
-
+  right: 0;
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
