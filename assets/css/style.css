@@ -41,7 +41,6 @@ body::before {
   bottom: 0;
   width: 2400px;              /* wider than viewport */
   background-repeat: no-repeat;
-  background-size: auto 100%; /* scale height */
   pointer-events: none;
   opacity: 0.25;
   z-index: -5;
@@ -52,7 +51,6 @@ body::before {
 .layer1 {
   background-image: url('../img/flora_layer1.png');
   left: calc(50% - 240px - var(--center-offset)); 
-  background-position: left center;
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
@@ -60,7 +58,6 @@ body::before {
 .layer2 {
   background-image: url('../img/flora_layer2.png');
   left: calc(50% + 240px + var(--center-offset));
-  background-position: right center;
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
