@@ -87,7 +87,7 @@ body::before {
 /* Falling leaves */
 .falling-leaf {
   position: fixed;
-  top: -10%;
+  top: -50%;
   left: calc(10% + 80% * var(--x));
   width: 50px;
   opacity: 0.8;
