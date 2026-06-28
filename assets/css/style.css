@@ -66,7 +66,7 @@ body::before {
 .layer2 {
   background-image: url('../img/flora_layer2.png');
   background-position: left center;  /* straight edge on left side of image */
-  left: calc(50% + var(--content-half) + var(--center-offset)- var(--flora-width));
+  left: calc(50% + var(--content-half) + var(--center-offset)- var(--flora-width)*.5);
   transform: translateY(calc(var(--scroll) * -0.15));
 }
 
@@ -82,7 +82,7 @@ body::before {
 .layer4 {
   background-image: url('../img/flora_layer4.png');
   background-position: left center;
-  left: calc(50% + var(--content-half) + var(--center-offset)- var(--flora-width));
+  left: calc(50% + var(--content-half) + var(--center-offset)- var(--flora-width)*.5);
   transform: translateY(calc(var(--scroll) * -0.3));
 }
 
