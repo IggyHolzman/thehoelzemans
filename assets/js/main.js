@@ -1,36 +1,40 @@
 /* -----------------------------------------------------------
-   FALLING LEAVES SYSTEM — CLEAN, STABLE, RANDOM EVERY CYCLE
+   FALLING LEAVES SYSTEM — STABLE, NO DELAY, RANDOM IMAGES
 ----------------------------------------------------------- */
 
 function createFallingLeaves(count = 30) {
 
-  // Median spacing controller (increase to spread leaves out more)
-  const maxDelay = 24;
-
   // Two speed groups (slow + very slow)
   const slowGroupSpeed = 36;
   const verySlowGroupSpeed = 52;
+
+  // List of leaf image variants (6 total, adjust paths as needed)
+  const leafImages = [
+    'assets/img/flora_falling1.png',
+    'assets/img/flora_falling2.png',
+    'assets/img/flora_falling3.png',
+    'assets/img/flora_falling4.png',
+    'assets/img/flora_falling5.png',
+    'assets/img/flora_falling6.png'
+  ];
 
   for (let i = 0; i < count; i++) {
 
     // Create leaf element
     const leaf = document.createElement('img');
 
-    // Correct asset path (replace with your actual leaf assets)
-    leaf.src = 'assets/img/flora_falling1.png';
+    // Random image from list
+    const imgIndex = Math.floor(Math.random() * leafImages.length);
+    leaf.src = leafImages[imgIndex];
 
     leaf.classList.add('falling-leaf');
 
     /* -----------------------------------------------------------
-       INITIAL RANDOM VALUES (APPLIED BEFORE APPENDING)
-       Ensures leaves start ABOVE viewport and do NOT appear mid‑air
+       INITIAL RANDOM VALUES (NO DELAY, ALWAYS VISIBLE)
     ----------------------------------------------------------- */
 
     // Random horizontal position
     leaf.style.setProperty('--x', Math.random());
-
-    // Random delay BEFORE animation begins
-    leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
 
     // Random speed group
     leaf.style.setProperty(
@@ -38,27 +42,27 @@ function createFallingLeaves(count = 30) {
       Math.random() < 0.5 ? `${slowGroupSpeed}s` : `${verySlowGroupSpeed}s`
     );
 
-    // Add leaf to DOM AFTER delay + speed are set
+    // Add leaf to DOM
     document.body.appendChild(leaf);
 
     /* -----------------------------------------------------------
-       RANDOMIZE AGAIN ON EACH CYCLE
-       Prevents deterministic looping pattern
-       Prevents disappearing/reappearing mid‑air
+       RANDOMIZE ON EACH CYCLE (NO DELAY CHANGE)
+       Prevents flicker/disappear, keeps motion continuous
     ----------------------------------------------------------- */
     leaf.addEventListener('animationiteration', () => {
 
-      // New random delay for next cycle
-      leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
-
-      // New random horizontal position
+      // New random horizontal position for next fall
       leaf.style.setProperty('--x', Math.random());
 
-      // Reassign speed group randomly each cycle
+      // New random speed group
       leaf.style.setProperty(
         '--speed',
         Math.random() < 0.5 ? `${slowGroupSpeed}s` : `${verySlowGroupSpeed}s`
       );
+
+      // Randomly change image each cycle
+      const nextIndex = Math.floor(Math.random() * leafImages.length);
+      leaf.src = leafImages[nextIndex];
     });
   }
 }
@@ -88,7 +92,7 @@ document.addEventListener('click', (e) => {
 
 
 /* -----------------------------------------------------------
-   PARALLAX SCROLL
+   PARALLAX SCROLL (drives foliage vertical movement)
 ----------------------------------------------------------- */
 
 window.addEventListener('scroll', () => {
@@ -118,4 +122,10 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 60 * 60 * 1000);
+
+/* -----------------------------------------------------------
+   NOTE: Page transition shutter effect for foliage
+   can be added later using additional classes/animations.
+----------------------------------------------------------- */
+
 
