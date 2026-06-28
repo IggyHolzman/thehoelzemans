@@ -34,6 +34,7 @@ body::before {
 
 /* Parallax layers */
 .parallax-layer {
+  position: fixed; /* REQUIRED */
   top: 0;
   bottom: 0;
   width: var(--flora-width, 360px);
@@ -58,13 +59,15 @@ body::before {
 
 .layer3 {
   background-image: url('../img/flora_layer3.png');
+  left: calc(50% - var(--center-offset) - var(--flora-width) - 40px); /* ADD THIS */
   transform: translateY(calc(var(--scroll) * -0.4));
 }
 
 .layer4 {
   background-image: url('../img/flora_layer4.png');
-  transform: translateY(calc(var(--scroll) * -0.4));
-}
+  left: calc(50% + var(--center-offset) + 40px); /* ADD THIS */
+  transform: translateY(calc(var(--scroll) * -0.4
+                             }
 
 /* Falling leaves */
 .falling-leaf {
