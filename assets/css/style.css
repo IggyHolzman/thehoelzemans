@@ -47,11 +47,13 @@ body::before {
 
 .layer1 {
   background-image: url('../img/flora_layer1.png');
+  left: calc(50% - var(--center-offset) - var(--flora-width));
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 .layer2 {
   background-image: url('../img/flora_layer2.png');
+  left: calc(50% + var(--center-offset));
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
