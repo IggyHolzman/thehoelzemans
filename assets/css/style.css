@@ -39,15 +39,19 @@ body::before {
   --center-offset: 8px;
 }
 
+:root {
+  --flora-width: 600px; /* adjust as needed */
+}
+
 /* Parallax layers */
 .parallax-layer {
   position: fixed;
   top: 0;
   bottom: 0;
   width: var(--flora-width);
-  background-repeat: repeat;   
-  background-size: auto 100%;          
-  background-position: center;    
+  background-repeat: no-repeat;
+  background-size: auto 100%;   /* scale height to viewport */
+  background-position: center;
   pointer-events: none;
   opacity: 0.25;
   z-index: -5;
@@ -56,30 +60,31 @@ body::before {
 /* LH near */
 .layer1 {
   background-image: url('../img/flora_layer1.png');
-  left: calc(50% - var(--center-offset) - var(--flora-width));
+  left: 0; /* stick to left edge */
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 /* RH near */
 .layer2 {
   background-image: url('../img/flora_layer2.png');
-  left: calc(50% + var(--center-offset));
+  right: 0; /* stick to right edge */
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 /* LH far */
 .layer3 {
   background-image: url('../img/flora_layer3.png');
-  left: calc(50% - var(--center-offset) - var(--flora-width) - 40px);
+  left: 0; /* also left edge */
   transform: translateY(calc(var(--scroll) * -0.4));
 }
 
 /* RH far */
 .layer4 {
   background-image: url('../img/flora_layer4.png');
-  left: calc(50% + var(--center-offset) + 40px);
+  right: 0; /* also right edge */
   transform: translateY(calc(var(--scroll) * -0.4));
 }
+
 
 
 /* Falling leaves */
