@@ -1,39 +1,77 @@
+/* -----------------------------------------------------------
+   FALLING LEAVES SYSTEM — CLEAN, STABLE, RANDOM EVERY CYCLE
+----------------------------------------------------------- */
+
 function createFallingLeaves(count = 30) {
-  const maxDelay = 24; // controls median spacing
+
+  // Median spacing controller (increase to spread leaves out more)
+  const maxDelay = 24;
+
+  // Two speed groups (slow + very slow)
   const slowGroupSpeed = 36;
   const verySlowGroupSpeed = 52;
 
   for (let i = 0; i < count; i++) {
+
+    // Create leaf element
     const leaf = document.createElement('img');
-    leaf.src = '../img/leaf.png';
+
+    // Correct asset path (replace with your actual leaf assets)
+    leaf.src = 'assets/img/flora_falling1.png';
+
     leaf.classList.add('falling-leaf');
+
+    /* -----------------------------------------------------------
+       INITIAL RANDOM VALUES (APPLIED BEFORE APPENDING)
+       Ensures leaves start ABOVE viewport and do NOT appear mid‑air
+    ----------------------------------------------------------- */
 
     // Random horizontal position
     leaf.style.setProperty('--x', Math.random());
 
-    // Random delay
+    // Random delay BEFORE animation begins
     leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
 
     // Random speed group
-    leaf.style.setProperty('--speed',
-      Math.random() < 0.5 ? slowGroupSpeed + 's' : verySlowGroupSpeed + 's'
+    leaf.style.setProperty(
+      '--speed',
+      Math.random() < 0.5 ? `${slowGroupSpeed}s` : `${verySlowGroupSpeed}s`
     );
 
-    // Randomize again on each cycle
-    leaf.addEventListener('animationiteration', () => {
-      leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
-      leaf.style.setProperty('--x', Math.random());
-    });
-
+    // Add leaf to DOM AFTER delay + speed are set
     document.body.appendChild(leaf);
+
+    /* -----------------------------------------------------------
+       RANDOMIZE AGAIN ON EACH CYCLE
+       Prevents deterministic looping pattern
+       Prevents disappearing/reappearing mid‑air
+    ----------------------------------------------------------- */
+    leaf.addEventListener('animationiteration', () => {
+
+      // New random delay for next cycle
+      leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
+
+      // New random horizontal position
+      leaf.style.setProperty('--x', Math.random());
+
+      // Reassign speed group randomly each cycle
+      leaf.style.setProperty(
+        '--speed',
+        Math.random() < 0.5 ? `${slowGroupSpeed}s` : `${verySlowGroupSpeed}s`
+      );
+    });
   }
 }
 
+// Generate leaves
 createFallingLeaves();
 
 
 
-// Menu toggle
+/* -----------------------------------------------------------
+   MENU TOGGLE
+----------------------------------------------------------- */
+
 const menuToggle = document.getElementById('menuToggle');
 const menu = document.getElementById('menu');
 
@@ -48,12 +86,20 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Parallax scroll
+
+/* -----------------------------------------------------------
+   PARALLAX SCROLL
+----------------------------------------------------------- */
+
 window.addEventListener('scroll', () => {
   document.documentElement.style.setProperty('--scroll', window.scrollY);
 });
 
-// Countdown
+
+/* -----------------------------------------------------------
+   COUNTDOWN TIMER
+----------------------------------------------------------- */
+
 function updateCountdown() {
   const weddingDate = new Date('2026-10-10T00:00:01');
   const now = new Date();
@@ -72,3 +118,4 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 60 * 60 * 1000);
+
