@@ -14,17 +14,16 @@
 <body>
 
   <!-- Parallax background layers -->
+  <!-- These are the tall side foliage panels -->
   <div class="parallax-layer layer1"></div>
   <div class="parallax-layer layer2"></div>
   <div class="parallax-layer layer3"></div>
   <div class="parallax-layer layer4"></div>
 
-
-  
-  <!-- Falling leaves -->
-  <img class="falling-leaf" style="--x:0.2; --delay:0s;" src="assets/img/flora_falling1.png" alt="Falling leaf 1">
-  <img class="falling-leaf" style="--x:0.7; --delay:3s;" src="assets/img/flora_falling2.png" alt="Falling leaf 2">
-  <img class="falling-leaf" style="--x:0.4; --delay:6s;" src="assets/img/flora_falling1.png" alt="Falling leaf 1">
+  <!-- Falling leaves (base 3, JS will add more later) -->
+  <img class="falling-leaf" style="--x:0.2; --delay:0s; --speed:40s;" src="assets/img/flora_falling1.png" alt="Falling leaf 1">
+  <img class="falling-leaf" style="--x:0.7; --delay:3s; --speed:52s;" src="assets/img/flora_falling2.png" alt="Falling leaf 2">
+  <img class="falling-leaf" style="--x:0.4; --delay:6s; --speed:40s;" src="assets/img/flora_falling1.png" alt="Falling leaf 1">
 
   <!-- Mini pinecone menu toggle -->
   <div class="menu-toggle" id="menuToggle">
@@ -55,7 +54,7 @@
     <img src="assets/img/pinecone_intro.png" alt="Pinecone Intro" />
   </div>
 
-  <!-- Main content -->
+  <!-- Main content (center column that foliage aligns to) -->
   <main class="content">
     <div class="title-script">Jordon &amp; Jan</div>
     <div class="title-serif">Together with their families</div>
@@ -83,13 +82,9 @@
     <!-- Foreground intro image -->
     <div class="foreground-image">
       <img src="assets/img/wedding_home_intro.png" alt="Wedding Intro" />
-      <!-- If you decide to use video instead:
-      <video src="assets/video/wedding_home_intro_video.webm" autoplay muted loop playsinline></video>
-      -->
     </div>
   </main>
 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
