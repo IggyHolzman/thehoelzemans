@@ -1,3 +1,23 @@
+// Falling leaves generator
+function createFallingLeaves(count = 20) {
+  for (let i = 0; i < count; i++) {
+    const leaf = document.createElement('img');
+    leaf.src = '../img/leaf.png'; // your leaf asset
+    leaf.classList.add('falling-leaf');
+
+    // Random horizontal position
+    leaf.style.setProperty('--x', Math.random());
+
+    // Random animation delay
+    leaf.style.setProperty('--delay', `${Math.random() * 10}s`);
+
+    document.body.appendChild(leaf);
+  }
+}
+
+createFallingLeaves();
+
+
 // Menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const menu = document.getElementById('menu');
@@ -20,7 +40,7 @@ window.addEventListener('scroll', () => {
 
 // Countdown
 function updateCountdown() {
-  const weddingDate = new Date('2026-10-10T13:00:00');
+  const weddingDate = new Date('2026-10-10T00:00:01');
   const now = new Date();
   const diff = weddingDate - now;
 
