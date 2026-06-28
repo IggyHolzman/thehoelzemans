@@ -28,24 +28,26 @@ body::before {
   background-image: url('../img/wedding_home_background.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.9;
-  z-index: -5;
+  opacity: 1;
+  z-index: -10;
 }
 
 /* Parallax layers */
 .parallax-layer {
   position: fixed;
-  inset: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
+  top: 0;
+  bottom: 0;
+  width: var(--flora-width, 180px);
+  background-repeat: repeat;
+  background-size: contain;
   pointer-events: none;
-  opacity: 0.35;
-  z-index: -4;
+  opacity: 0.25;
+  z-index: -5;
 }
 
 .layer1 {
   background-image: url('../img/flora_layer1.png');
-  transform: translateY(calc(var(--scroll) * -0.1));
+  transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 .layer2 {
@@ -55,7 +57,12 @@ body::before {
 
 .layer3 {
   background-image: url('../img/flora_layer3.png');
-  transform: translateY(calc(var(--scroll) * -0.35));
+  transform: translateY(calc(var(--scroll) * -0.4));
+}
+
+.layer4 {
+  background-image: url('../img/flora_layer4.png');
+  transform: translateY(calc(var(--scroll) * -0.4));
 }
 
 /* Falling leaves */
@@ -65,7 +72,7 @@ body::before {
   left: calc(10% + 80% * var(--x));
   width: 50px;
   opacity: 0.8;
-  animation: fall 12s linear infinite;
+  animation: fall 24s linear infinite;
   animation-delay: var(--delay);
   z-index: -3;
 }
