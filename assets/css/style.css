@@ -139,7 +139,7 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 360px;
+  width: 420px;
   opacity: 0;
   animation: pineconeIntro 4s ease forwards;
   z-index: 5;
@@ -153,7 +153,7 @@ body::before {
 @keyframes pineconeIntro {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
   20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.5); }
+  50% { transform: translate(-50%, -50%) scale(2); }
   70% { transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0.3; }
 }
