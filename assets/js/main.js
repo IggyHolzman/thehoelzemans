@@ -16,6 +16,10 @@ function createFallingLeaves(count = 20) {
 }
 
 createFallingLeaves();
+leaf.addEventListener('animationiteration', () => {
+  leaf.style.setProperty('--delay', `${Math.random() * maxDelay}s`);
+  leaf.style.setProperty('--x', Math.random());
+});
 
 
 // Menu toggle
