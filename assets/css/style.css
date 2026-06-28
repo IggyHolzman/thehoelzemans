@@ -249,6 +249,8 @@ body::before {
   text-decoration: none;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  border-color: var(--accent-blue);
+  border-width: 3px;
 }
 
 .btn-primary {
