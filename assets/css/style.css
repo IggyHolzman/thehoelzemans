@@ -3,8 +3,14 @@
   --ink: #1f2430;
   --accent-blue: #2f4a73;
   --accent-gold: #b08a4a;
-  --flora-width: 1600px;
-  --content-half: 240px;      
+
+  /* Very wide foliage panels so they overflow off-screen */
+  --flora-width: 2000px;
+
+  /* Half of content max-width (480px) */
+  --content-half: 240px;
+
+  /* Small gap between content and foliage edge */
   --center-offset: 8px;
 }
 
@@ -35,60 +41,56 @@ body::before {
   z-index: -10;
 }
 
-
+/* Tall side foliage panels */
 .parallax-layer {
   position: fixed;
   top: 0;
-  bottom: 0;
-  width: var(--flora-width);
+  bottom: 0;                     /* full viewport height */
+  width: var(--flora-width);     /* very wide, will overflow off-screen */
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  background-size: auto 100%;    /* scale height to viewport, width proportional */
   pointer-events: none;
   opacity: 0.25;
   z-index: -5;
 }
 
-
-/* LH near */
+/* LH near: straight edge aligned to left content boundary, foliage extends left */
 .layer1 {
   background-image: url('../img/flora_layer1.png');
-  background-position: left center;
-  left: calc(50% - 240px - var(--center-offset)); 
+  background-position: right center; /* straight edge on right side of image */
+  left: calc(50% - var(--content-half) - var(--center-offset) - var(--flora-width));
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
-/* RH near */
+/* RH near: straight edge aligned to right content boundary, foliage extends right */
 .layer2 {
   background-image: url('../img/flora_layer2.png');
-  background-position: right center;
-  left: calc(50% + 240px + var(--center-offset));
+  background-position: left center;  /* straight edge on left side of image */
+  left: calc(50% + var(--content-half) + var(--center-offset));
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
-/* LH far */
+/* LH far: same alignment as LH near, different parallax speed */
 .layer3 {
   background-image: url('../img/flora_layer3.png');
-  background-position: left center;
-  left: calc(50% - 240px - var(--center-offset));
+  background-position: right center;
+  left: calc(50% - var(--content-half) - var(--center-offset) - var(--flora-width));
   transform: translateY(calc(var(--scroll) * -0.4));
 }
 
-/* RH far */
+/* RH far: same alignment as RH near, different parallax speed */
 .layer4 {
   background-image: url('../img/flora_layer4.png');
-  background-position: right center;
-  left: calc(50% + 240px + var(--center-offset));
+  background-position: left center;
+  left: calc(50% + var(--content-half) + var(--center-offset));
   transform: translateY(calc(var(--scroll) * -0.4));
 }
-
-
-
 
 /* Falling leaves */
 .falling-leaf {
   position: fixed;
-  top: -50%;
-  left: calc(10% + 80% * var(--x));
+  top: -20%;                               /* start just above viewport */
+  left: calc(10% + 80% * var(--x));        /* horizontal position via CSS var */
   width: 50px;
   opacity: 0.8;
   animation: fall var(--speed) linear infinite;
@@ -184,7 +186,7 @@ body::before {
   100% { opacity: 0.2; }
 }
 
-/* Main content */
+/* Main content (center column) */
 .content {
   width: 100%;
   max-width: 480px;
@@ -308,3 +310,4 @@ body::before {
     font-size: 3.6rem;
   }
 }
+
