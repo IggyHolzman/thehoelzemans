@@ -4,8 +4,8 @@
   --accent-blue: #2f4a73;
   --accent-gold: #b08a4a;
 
-  /* Very wide foliage panels so they overflow off-screen */
-  --flora-width: 2000px;
+  /* Very wide foliage panels so they overflow off-screen horizontally */
+  --flora-width: 2200px;
 
   /* Half of content max-width (480px) */
   --content-half: 240px;
@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Background texture */
+/* Background texture (seen only through foliage gaps) */
 body::before {
   content: "";
   position: fixed;
@@ -41,17 +41,17 @@ body::before {
   z-index: -10;
 }
 
-/* Tall side foliage panels */
+/* Tall side foliage panels that scroll with page */
 .parallax-layer {
   position: fixed;
-  top: 0;
-  bottom: 0;                     /* full viewport height */
-  width: var(--flora-width);     /* very wide, will overflow off-screen */
+  top: -150vh;                 /* start well above viewport */
+  height: 400vh;               /* 4× viewport height, never fully visible at once */
+  width: var(--flora-width);   /* very wide, fills side white space */
   background-repeat: no-repeat;
-  background-size: auto 100%;    /* scale height to viewport, width proportional */
+  background-size: cover;      /* use full PNG, scaled */
   pointer-events: none;
-  opacity: 0.25;
-  z-index: -5;
+  opacity: 0.35;
+  z-index: -6;                 /* above background, below leaves/content */
 }
 
 /* LH near: straight edge aligned to left content boundary, foliage extends left */
@@ -59,7 +59,7 @@ body::before {
   background-image: url('../img/flora_layer1.png');
   background-position: right center; /* straight edge on right side of image */
   left: calc(50% - var(--content-half) - var(--center-offset) - var(--flora-width));
-  transform: translateY(calc(var(--scroll) * -0.2));
+  transform: translateY(calc(var(--scroll) * -0.15)); /* subtle parallax */
 }
 
 /* RH near: straight edge aligned to right content boundary, foliage extends right */
@@ -67,7 +67,7 @@ body::before {
   background-image: url('../img/flora_layer2.png');
   background-position: left center;  /* straight edge on left side of image */
   left: calc(50% + var(--content-half) + var(--center-offset));
-  transform: translateY(calc(var(--scroll) * -0.2));
+  transform: translateY(calc(var(--scroll) * -0.15));
 }
 
 /* LH far: same alignment as LH near, different parallax speed */
@@ -75,7 +75,7 @@ body::before {
   background-image: url('../img/flora_layer3.png');
   background-position: right center;
   left: calc(50% - var(--content-half) - var(--center-offset) - var(--flora-width));
-  transform: translateY(calc(var(--scroll) * -0.4));
+  transform: translateY(calc(var(--scroll) * -0.3));  /* deeper parallax */
 }
 
 /* RH far: same alignment as RH near, different parallax speed */
@@ -83,24 +83,23 @@ body::before {
   background-image: url('../img/flora_layer4.png');
   background-position: left center;
   left: calc(50% + var(--content-half) + var(--center-offset));
-  transform: translateY(calc(var(--scroll) * -0.4));
+  transform: translateY(calc(var(--scroll) * -0.3));
 }
 
 /* Falling leaves */
 .falling-leaf {
   position: fixed;
-  top: -20%;                               /* start just above viewport */
-  left: calc(10% + 80% * var(--x));        /* horizontal position via CSS var */
+  top: -20vh;                            /* start 20% above viewport */
+  left: calc(10% + 80% * var(--x));      /* horizontal position via CSS var */
   width: 50px;
-  opacity: 0.8;
+  opacity: 0.9;
   animation: fall var(--speed) linear infinite;
-  animation-delay: var(--delay);
-  z-index: -3;
+  z-index: -4;                           /* above foliage, below content */
 }
 
 @keyframes fall {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(120vh) rotate(360deg); }
+  0%   { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(140vh) rotate(360deg); } /* fall past bottom */
 }
 
 /* Menu toggle */
@@ -179,14 +178,14 @@ body::before {
 }
 
 @keyframes pineconeIntro {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-  20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.8); }
-  70% { transform: translate(-50%, -50%) scale(1); }
+  0%   { opacity: 0;   transform: translate(-50%, -50%) scale(0.2); }
+  20%  { opacity: 1;   transform: translate(-50%, -50%) scale(1); }
+  50%  {               transform: translate(-50%, -50%) scale(1.8); }
+  70%  {               transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0.2; }
 }
 
-/* Main content (center column) */
+/* Main content */
 .content {
   width: 100%;
   max-width: 480px;
@@ -196,11 +195,13 @@ body::before {
   opacity: 0;
   animation: contentFadeIn 3s ease forwards;
   animation-delay: 2.5s;
+  position: relative;
+  z-index: 1; /* above foliage and leaves */
 }
 
 @keyframes contentFadeIn {
   from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .title-script {
@@ -310,4 +311,5 @@ body::before {
     font-size: 3.6rem;
   }
 }
+
 
