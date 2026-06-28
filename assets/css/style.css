@@ -151,11 +151,11 @@ body::before {
 }
 
 @keyframes pineconeIntro {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
   20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(2); }
+  50% { transform: translate(-50%, -50%) scale(1.8); }
   70% { transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0.3; }
+  100% { opacity: 0.2; }
 }
 
 /* Main content */
