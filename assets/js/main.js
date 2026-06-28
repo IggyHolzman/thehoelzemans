@@ -32,6 +32,9 @@ function createFallingLeaves(count = 30) {
     /* -----------------------------------------------------------
        INITIAL RANDOM VALUES (NO DELAY, ALWAYS VISIBLE)
     ----------------------------------------------------------- */
+    
+    // Random vertical position
+    leaf.style.setProperty('--y', Math.random());
 
     // Random horizontal position
     leaf.style.setProperty('--x', Math.random());
@@ -50,8 +53,8 @@ function createFallingLeaves(count = 30) {
        Prevents flicker/disappear, keeps motion continuous
     ----------------------------------------------------------- */
     leaf.addEventListener('animationiteration', () => {
-
-
+      //Randomize start height 
+      leaf.style.setProperty('--y', Math.random() * 0.3);
 
       // Randomly change image each cycle
       const nextIndex = Math.floor(Math.random() * leafImages.length);
