@@ -142,7 +142,7 @@ body::before {
   width: 420px;
   opacity: 0;
   animation: pineconeIntro 4s ease forwards;
-  z-index: 5;
+  z-index: 0;
 }
 
 .pinecone-intro img {
