@@ -87,7 +87,7 @@ body::before {
   left: calc(10% + 80% * var(--x));
   width: 50px;
   opacity: 0.8;
-  animation: fall 24s linear infinite;
+  animation: fall var(--speed) linear infinite;
   animation-delay: var(--delay);
   z-index: -3;
 }
