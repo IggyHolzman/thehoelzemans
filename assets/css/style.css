@@ -45,7 +45,7 @@ body::before {
 .parallax-layer {
   position: fixed;
   top: -150vh;                 /* start well above viewport */
-  height: var(--flora-width)*5.09;               /* 5.09× width to preserve png proportions */
+  height: calc(var(--flora-width)*5.09);               /* 5.09× width to preserve png proportions */
   width: var(--flora-width);   /* very wide, fills side white space */
   background-repeat: no-repeat;
   background-size: cover;      /* use full PNG, scaled */
