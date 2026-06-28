@@ -52,28 +52,28 @@ body::before {
 /* LH near */
 .layer1 {
   background-image: url('../img/flora_layer1.png');
-  left: 0;                       /* REQUIRED */
+  left: 0; background-position: left center;
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 /* RH near */
 .layer2 {
   background-image: url('../img/flora_layer2.png');
-  right: 0;                      /* REQUIRED */
+  right: 0; background-position: right center;
   transform: translateY(calc(var(--scroll) * -0.2));
 }
 
 /* LH far */
 .layer3 {
   background-image: url('../img/flora_layer3.png');
-  left: 0;                       /* REQUIRED */
+  left: 0; background-position: left center;
   transform: translateY(calc(var(--scroll) * -0.4));
 }
 
 /* RH far */
 .layer4 {
   background-image: url('../img/flora_layer4.png');
-  right: 0;                      /* REQUIRED */
+  right: 0; background-position: right center;
   transform: translateY(calc(var(--scroll) * -0.4));
 }
 
