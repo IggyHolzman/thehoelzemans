@@ -48,7 +48,7 @@ body::before {
   width: var(--flora-width);
   background-repeat: no-repeat;
   background-size: auto 200%;   /* scale height to viewport */
-  
+  background-position: center;
   pointer-events: none;
   opacity: 0.25;
   z-index: -5;
@@ -57,7 +57,7 @@ body::before {
 /* LH near */
 .layer1 {
   background-image: url('../img/flora_layer1.png');
-  background-position: left;
+  
   left: 0; /* stick to left edge */
   transform: translateY(calc(var(--scroll) * -0.2));
 }
@@ -72,7 +72,7 @@ body::before {
 /* LH far */
 .layer3 {
   background-image: url('../img/flora_layer3.png');
-  background-position: left;
+  
   left: 0; /* also left edge */
   transform: translateY(calc(var(--scroll) * -0.4));
 }
