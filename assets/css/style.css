@@ -89,10 +89,10 @@ body::before {
 /* Falling leaves */
 .falling-leaf {
   position: fixed;
-  top: -20vh;                            /* start 20% above viewport */
-  left: calc(-5% + 105% * var(--x));      /* horizontal position via CSS var */
-  width: 50px;
-  opacity: 0.5;
+  top: calc(-10vh - (100vh * var(--y))); /* var(--y) = 0 → -10vh, var(--y) = 1 → -110vh */
+  left: calc(1% + 99% * var(--x));      /* horizontal position via CSS var */
+  width: 75px;
+  opacity: 0.2;
   animation: fall var(--speed) linear infinite;
   animation-delay: 0s;
   z-index: -4;                           /* above foliage, below content */
