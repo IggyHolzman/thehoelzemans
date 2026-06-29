@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Hoelzemans – Wedding</title>
+  <title>Jordon & Jan — Wedding</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -13,78 +13,85 @@
 
 <body>
 
-  <!-- Parallax background layers (tall foliage panels that scroll with page) -->
-  <div class="parallax-layer layer1"></div>
-  <div class="parallax-layer layer2"></div>
-  <div class="parallax-layer layer3"></div>
-  <div class="parallax-layer layer4"></div>
-
-  <!-- Base falling leaves (JS will add more) -->
-  <img class="falling-leaf" style="--x:0.2; --speed:40s;" src="assets/img/flora_falling1.png" alt="Falling leaf 1">
-  <img class="falling-leaf" style="--x:0.7; --speed:52s;" src="assets/img/flora_falling2.png" alt="Falling leaf 2">
-  <img class="falling-leaf" style="--x:0.4; --speed:40s;" src="assets/img/flora_falling3.png" alt="Falling leaf 3">
-
-  <!-- Mini pinecone menu toggle -->
-  <div class="menu-toggle" id="menuToggle">
-    <img src="assets/img/pinecone_menu_icon.png" alt="Menu" />
-  </div>
-
-  <!-- Slide-in menu -->
-  <nav class="menu" id="menu">
-    <h2>Menu</h2>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#our-story">Our Story</a></li>
-      <li><a href="#event-details">Event Details</a></li>
-      <li><a href="#rsvp">RSVP</a></li>
-      <li><a href="#ceremony-venue">Ceremony Venue</a></li>
-      <li><a href="#reception-venue">Reception Venue</a></li>
-      <li><a href="#food-drink">Food and Drink</a></li>
-      <li><a href="#where-to-stay">Where to Stay</a></li>
-      <li><a href="#registry">Registry</a></li>
-      <li><a href="#hoelzmedia">HoelzMedia</a></li>
-      <li><a href="#trivia">Hoelzeman Trivia</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <!-- Pinecone intro animation -->
+  <!-- Pinecone intro (only thing visible at start) -->
   <div class="pinecone-intro">
     <img src="assets/img/pinecone_intro.png" alt="Pinecone Intro" />
   </div>
 
+  <!-- Foliage layers (slide in after pinecone) -->
+  <div class="parallax-wrapper">
+  <div class="parallax-layer layer1"></div>
+  </div>
+  <div class="parallax-wrapper">
+  <div class="parallax-layer layer2"></div>
+  </div>
+  <div class="parallax-wrapper">
+  <div class="parallax-layer layer3"></div>
+  </div>
+  <div class="parallax-wrapper">
+  <div class="parallax-layer layer4"></div>
+  </div>
+
+
+  <!-- Falling leaves (fade in after text) -->
+  <div id="leafContainer"></div>
+
+  <!-- Slide-in menu -->
+  <!-- Slide-in menu -->
+  <nav class="menu" id="menu">
+    <h2>Details</h2>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/our-story.html">Our Story</a></li>
+      <li><a href="/event-details.html">Event Details</a></li>
+      <li><a href="/rsvp.html">RSVP</a></li>
+      <li><a href="/ceremony-venue.html">Ceremony Venue</a></li>
+      <li><a href="/reception-venue.html">Reception Venue</a></li>
+      <li><a href="/food-and-drink.html">Food and Drink</a></li>
+      <li><a href="/where-to-stay.html">Where to Stay</a></li>
+      <li><a href="/registry.html">Registry</a></li>
+      <li><a href="/hoelzmedia.html">HoelzMedia</a></li>
+      <li><a href="/hoelzeman-trivia.html">Hoelzeman Trivia</a></li>
+      <li><a href="/contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
   <!-- Main content -->
-  <main class="content">
-    <div class="title-script">Jordon &amp; Jan</div>
-    <div class="title-serif">Together with their families</div>
-    <div class="divider"></div>
+ <main class="content">
 
-    <div class="date-line">Saturday, the Tenth of October, 2026</div>
-    <div class="location-line">St. Elizabeth of Hungary Catholic Church • Eureka Springs, Arkansas</div>
+  <div class="text-wrapper">
 
-    <!-- Countdown -->
-    <section class="countdown" aria-label="Countdown to wedding day">
-      <div class="countdown-label">Countdown to the Sacrament</div>
-      <div class="countdown-days" id="countdownDays">
-        0
-        <span>Days</span>
-      </div>
-    </section>
+    <div class="title-script fade-in-2">Jordon &amp; Jan</div>
 
-    <!-- Buttons -->
-    <div class="button-row">
-      <a href="#rsvp" class="btn btn-primary">RSVP</a>
-      <a href="#event-details" class="btn">Event Details</a>
-      <a href="#where-to-stay" class="btn">Where to Stay</a>
+    <div class="title-serif fade-in-3">
+      Cordially invite you, our families and friends, to a celebration of our Holy Matrimony
     </div>
 
-    <!-- Foreground intro image -->
-    <div class="foreground-image">
-      <img src="assets/img/wedding_home_intro.png" alt="Wedding Intro" />
+    <div class="countdown-label fade-in-4">Countdown to the Sacrament</div>
+
+   <div class="countdown-line fade-in-1" id="countdownLine">
+  <span class="count-num" id="countDays">0</span>
+  <span class="count-label">Days</span>
+
+  <span class="count-num" id="countHours">0</span>
+  <span class="count-label">Hours</span>
+
+  <span class="count-num" id="countMinutes">0</span>
+  <span class="count-label">Minutes</span>
+</div>
+
+
+    <div class="button-row fade-in-5">
+      <a id="detailsButton" class="btn btn-primary">Details</a>
+      <a href="#rsvp" class="btn">RSVP</a>
+      <a href="#contact" class="btn">Contact Us</a>
     </div>
-  </main>
+
+  </div>
+
+ </main>
+
 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-

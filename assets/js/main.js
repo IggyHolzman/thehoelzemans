@@ -1,105 +1,75 @@
 /* -----------------------------------------------------------
-   FALLING LEAVES SYSTEM — STABLE, NO DELAY, RANDOM IMAGES
+   FALLING LEAVES — stable, staggered, fade-in
 ----------------------------------------------------------- */
 
 function createFallingLeaves(count = 30) {
 
-  // Two speed groups (slow + very slow)
-  const slowGroupSpeed = 40;
-  const verySlowGroupSpeed = 60;
+  const slowGroupSpeed = 36;
+  const verySlowGroupSpeed = 52;
 
-  // List of leaf image variants (6 total, adjust paths as needed)
   const leafImages = [
     'assets/img/flora_falling1.png',
     'assets/img/flora_falling2.png',
     'assets/img/flora_falling3.png',
     'assets/img/flora_falling4.png',
     'assets/img/flora_falling5.png',
-    'assets/img/flora_falling6.png',
-    'assets/img/flora_falling7.png',
-    'assets/img/flora_falling8.png'
+    'assets/img/flora_falling6.png'
   ];
+
+  const container = document.getElementById('leafContainer');
 
   for (let i = 0; i < count; i++) {
 
-    // Create leaf element
     const leaf = document.createElement('img');
-
-    // Random image from list
-    const imgIndex = Math.floor(Math.random() * leafImages.length);
-    leaf.src = leafImages[imgIndex];
-
     leaf.classList.add('falling-leaf');
 
-    /* -----------------------------------------------------------
-       INITIAL RANDOM VALUES (NO DELAY, ALWAYS VISIBLE)
-    ----------------------------------------------------------- */
-    
-    // Random vertical position
-    leaf.style.setProperty('--y', Math.random());
+    leaf.src = leafImages[Math.floor(Math.random() * leafImages.length)];
 
-    // Random horizontal position
     leaf.style.setProperty('--x', Math.random());
-
-    // Random speed group
+    leaf.style.setProperty('--y', Math.random());
     leaf.style.setProperty(
       '--speed',
       Math.random() < 0.5 ? `${slowGroupSpeed}s` : `${verySlowGroupSpeed}s`
     );
 
-    // Add leaf to DOM
-    document.body.appendChild(leaf);
+    container.appendChild(leaf);
 
-    /* -----------------------------------------------------------
-       RANDOMIZE ON EACH CYCLE (NO DELAY CHANGE)
-       Prevents flicker/disappear, keeps motion continuous
-    ----------------------------------------------------------- */
     leaf.addEventListener('animationiteration', () => {
-      //Randomize start height 
-      leaf.style.setProperty('--y', Math.random());
-
-      // Randomly change image each cycle
-      const nextIndex = Math.floor(Math.random() * leafImages.length);
-      leaf.src = leafImages[nextIndex];
+      leaf.style.setProperty('--y', Math.random() * 0.3);
+      leaf.src = leafImages[Math.floor(Math.random() * leafImages.length)];
     });
   }
 }
 
-// Generate leaves
 createFallingLeaves();
-
-
 
 /* -----------------------------------------------------------
    MENU TOGGLE
 ----------------------------------------------------------- */
 
-const menuToggle = document.getElementById('menuToggle');
 const menu = document.getElementById('menu');
+const detailsButton = document.getElementById('detailsButton');
 
-menuToggle.addEventListener('click', () => {
+detailsButton.addEventListener('click', () => {
   menu.classList.toggle('open');
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', (e) => {
-  if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+  if (!menu.contains(e.target) && e.target !== detailsButton) {
     menu.classList.remove('open');
   }
 });
 
-
 /* -----------------------------------------------------------
-   PARALLAX SCROLL (drives foliage vertical movement)
+   PARALLAX SCROLL
 ----------------------------------------------------------- */
 
 window.addEventListener('scroll', () => {
   document.documentElement.style.setProperty('--scroll', window.scrollY);
 });
 
-
 /* -----------------------------------------------------------
-   COUNTDOWN TIMER
+   COUNTDOWN
 ----------------------------------------------------------- */
 
 function updateCountdown() {
@@ -107,23 +77,26 @@ function updateCountdown() {
   const now = new Date();
   const diff = weddingDate - now;
 
-  const daysElement = document.getElementById('countdownDays');
+  const daysEl = document.getElementById('countDays');
+  const hoursEl = document.getElementById('countHours');
+  const minutesEl = document.getElementById('countMinutes');
 
   if (diff <= 0) {
-    daysElement.innerHTML = '0<span>Days</span>';
+    daysEl.textContent = 0;
+    hoursEl.textContent = 0;
+    minutesEl.textContent = 0;
     return;
   }
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  daysElement.innerHTML = days + '<span>Days</span>';
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+  daysEl.textContent = days;
+  hoursEl.textContent = hours;
+  minutesEl.textContent = minutes;
 }
 
+
 updateCountdown();
-setInterval(updateCountdown, 60 * 60 * 1000);
-
-/* -----------------------------------------------------------
-   NOTE: Page transition shutter effect for foliage
-   can be added later using additional classes/animations.
------------------------------------------------------------ */
-
-
+setInterval(updateCountdown, 60 * 1000);
