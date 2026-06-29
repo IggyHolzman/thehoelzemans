@@ -73,7 +73,7 @@ window.addEventListener('scroll', () => {
 ----------------------------------------------------------- */
 
 function updateCountdown() {
-  const weddingDate = new Date('2026-10-10T00:00:01');
+  const weddingDate = new Date('2026-10-10T13:00:00');
   const now = new Date();
   const diff = weddingDate - now;
 
