@@ -4,7 +4,10 @@
   --accent-blue: #355c7d;
   --accent-gold: #c69e4f;
 
-  --flora-width: 720px;
+  /* Very wide foliage panels so they overflow off-screen horizontally */
+  --flora-width: 1800px;
+
+  /* Half of content max-width (480px) */
   --content-half: 240px;
   --center-offset: 120px;
 }
@@ -88,14 +91,14 @@ body::before {
 /* Foliage */
 .parallax-layer {
   position: fixed;
-  top: -135vh;
-  height: calc(var(--flora-width) * 5);
-  width: var(--flora-width);
+  top: -150vh;                 /* start well above viewport */
+  height: calc(var(--flora-width)*5.09);               /* 5.09× width to preserve png proportions */
+  width: var(--flora-width);   /* very wide, fills side white space */
   background-repeat: no-repeat;
   background-size: cover;
   pointer-events: none;
-  opacity: 0;
-  z-index: -6;
+  opacity: 0.4;
+  z-index: -6;                 /* above background, below leaves/content */
 }
 
 /* LH near */
